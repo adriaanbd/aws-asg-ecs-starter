@@ -3,12 +3,12 @@ variable "namespace" {
 }
 
 variable "pub_sub_a_id" {
-  type        = number
+  type        = string
   description = "The ID of the Public Subnet A"
 }
 
 variable "prv_sub_a_id" {
-  type        = number
+  type        = string
   description = "The ID of the Public Subnet A"
 }
 
@@ -25,6 +25,6 @@ variable "ssh_key_name" {
 }
 
 variable "bastion_sg_id" {
-  type = number
+  type = string
   description = "Main EC2 Instance Type"
 }

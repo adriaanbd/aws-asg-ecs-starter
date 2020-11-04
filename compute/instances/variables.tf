@@ -26,7 +26,7 @@ variable "prv_sub_a_id" {
 
 variable "bastion_sg_id" {
   type        = string
-  description = "ID of the Public Subnet A"
+  description = "ID of the Security Group for Bastion Host"
 }
 
 variable "ssh_key_name" {
