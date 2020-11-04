@@ -3,7 +3,7 @@ variable "namespace" {
 }
 
 variable "vpc_id" {
-  type        = number
+  type        = string
   description = "ID of the main VPC"
 }
 
