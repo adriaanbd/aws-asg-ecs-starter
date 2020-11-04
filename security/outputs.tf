@@ -6,6 +6,10 @@ output "ssh_key_path" {
   value = module.keys.ssh_key_path
 }
 
-output "strict_sg_id" {
-  value = module.firewall.strict_sg_id
+output "bastion_sg_id" {
+  value = module.firewall.bastion_sg_id
+}
+
+output "app_sg_id" {
+  value = module.firewall.app_sg_id
 }
