@@ -12,3 +12,10 @@ module "compute" {
   ssh_key_name  = module.security.key_name
   bastion_sg_id = module.security.bastion_sg_id
 }
+
+module "security" {
+  source       = "./security"
+  namespace    = var.namespace
+  vpc_id       = module.network.vpc_id
+  ssh_key_name = var.ssh_key_name
+}

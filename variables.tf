@@ -10,7 +10,7 @@ variable "region" {
   type        = string
 }
 
-variable "key_pair_name" {
+variable "ssh_key_name" {
   description = "Key Name for SSH"
   type        = string
   default     = "aws-starter-key"

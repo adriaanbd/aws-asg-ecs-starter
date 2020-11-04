@@ -23,3 +23,8 @@ variable "ssh_key_name" {
   description = "Name of key for SSH"
   default     = "aws-starter-key"
 }
+
+variable "bastion_sg_id" {
+  type = number
+  description = "Main EC2 Instance Type"
+}
