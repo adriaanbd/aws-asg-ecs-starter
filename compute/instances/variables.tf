@@ -29,6 +29,11 @@ variable "bastion_sg_id" {
   description = "ID of the Security Group for Bastion Host"
 }
 
+variable "app_sg_id" {
+  type        = string
+  description = "ID of the Security Group for App Host"
+}
+
 variable "ssh_key_name" {
   type        = string
   description = "Key Name of the Generated AWS Key Pair"
