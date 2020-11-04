@@ -24,7 +24,7 @@ variable "ssh_key_name" {
   default     = "aws-starter-key"
 }
 
-variable "bastion_sg_id" {
+variable "strict_sg_id" {
   type = string
-  description = "Main EC2 Instance Type"
+  description = "A Security Group to be used by the instances"
 }
