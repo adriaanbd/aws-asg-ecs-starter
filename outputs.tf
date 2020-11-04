@@ -5,7 +5,7 @@ output "vpc_id" {
 
 output "bastion_a_ip" {
   description = "The Public IP of the Instance A"
-  value       = module.compute.public_ip_a
+  value       = module.compute.bastion_a_ip
 }
 
 output "ssh_key_name" {
