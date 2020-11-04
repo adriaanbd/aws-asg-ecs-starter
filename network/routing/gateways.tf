@@ -18,7 +18,7 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_nat_gateway" "ngw_a" {
   allocation_id = aws_eip.nat_eip_a.id
-  subnet_id     = aws_subnet.pub_subnet_a.id
+  subnet_id     = var.pub_sub_a_id
   tags = {
     Name = "${var.namespace}-ngw-a"
     Env  = "dev"

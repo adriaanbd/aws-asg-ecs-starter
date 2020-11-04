@@ -1,3 +1,7 @@
+variable "namespace" {
+  type = string
+}
+
 variable "main_cidr" {
   type        = string
   description = "CIDR block for the main VPC"
