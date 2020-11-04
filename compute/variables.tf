@@ -24,7 +24,12 @@ variable "ssh_key_name" {
   default     = "aws-starter-key"
 }
 
-variable "strict_sg_id" {
+variable "bastion_sg_id" {
   type = string
-  description = "A Security Group to be used by the instances"
+  description = "A Security Group to be used by the bastion instances"
+}
+
+variable "app_sg_id" {
+  type = string
+  description = "A Security Group to be used by the instances in private subnet"
 }

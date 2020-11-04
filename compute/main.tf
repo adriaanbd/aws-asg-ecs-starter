@@ -6,8 +6,8 @@ module "instances" {
   instance_type  = var.instance_type
   ami_linux_2_id = module.data.ami_linux_2_id
   ssh_key_name   = var.ssh_key_name
-  bastion_sg_id  = var.strict_sg_id
-  app_sg_id      = var.strict_sg_id
+  bastion_sg_id  = var.bastion_sg_id
+  app_sg_id      = var.app_sg_id
 }
 
 module "data" {
