@@ -24,12 +24,12 @@ variable "prv_sub_a_id" {
   description = "ID of the Private Subnet A"
 }
 
-variable "bastion_sg" {
+variable "bastion_sg_id" {
   type        = string
   description = "ID of the Public Subnet A"
 }
 
-variable "key_name" {
+variable "ssh_key_name" {
   type        = string
   description = "Key Name of the Generated AWS Key Pair"
 }
