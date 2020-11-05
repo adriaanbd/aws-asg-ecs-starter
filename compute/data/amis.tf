@@ -1,3 +1,7 @@
-data "aws_ssm_parameter" "ami_linux_2" {
-  name = var.ami_ssm_param_name
+data "aws_ssm_parameter" "linux_latest_ami" {
+  name = var.linux_ami_from_ssm_param
+}
+
+data "aws_ssm_parameter" "ecs_optimized_ami" {
+  name = var.ecs_ami_from_ssm_param
 }

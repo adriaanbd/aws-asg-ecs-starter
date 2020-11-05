@@ -13,3 +13,7 @@ output "bastion_sg_id" {
 output "app_sg_id" {
   value = module.firewall.app_sg_id
 }
+
+output "ecs_instance_profile_arn" {
+  value = module.iam.ecs_instance_profile_arn
+}

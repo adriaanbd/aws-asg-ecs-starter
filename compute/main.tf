@@ -11,6 +11,16 @@ module "instances" {
 }
 
 module "data" {
-  source             = "./data"
-  ami_ssm_param_name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  source                   = "./data"
+  linux_ami_from_ssm_param = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  ecs_ami_from_ssm_param   = "/aws/service/ecs/optimized-ami/amazon-linux-2/recommended"
+}
+
+module "ecs" {
+  source        = "./ecs"
+  namespace     = var.namespace
+  instance_ami  = module.data.ecs_ami
+  instance_type = var.instance_type
+  instance_prof = var.ecs_instance_profile_arn
+  app_sg_id     = var.app_sg_id
 }

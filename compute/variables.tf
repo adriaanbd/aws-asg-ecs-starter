@@ -18,6 +18,11 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
+variable "ecs_instance_profile_arn" {
+  type        = string
+  description = "ARN of the IAM instance profile for ECS"
+}
+
 variable "ssh_key_name" {
   type        = string
   description = "Name of key for SSH"
@@ -25,11 +30,11 @@ variable "ssh_key_name" {
 }
 
 variable "bastion_sg_id" {
-  type = string
+  type        = string
   description = "A Security Group to be used by the bastion instances"
 }
 
 variable "app_sg_id" {
-  type = string
+  type        = string
   description = "A Security Group to be used by the instances in private subnet"
 }
