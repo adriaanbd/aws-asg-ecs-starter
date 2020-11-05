@@ -12,6 +12,16 @@ variable "prv_sub_a_id" {
   description = "The ID of the Public Subnet A"
 }
 
+variable "pub_sub_b_id" {
+  type        = string
+  description = "The ID of the Public Subnet B"
+}
+
+variable "prv_sub_b_id" {
+  type        = string
+  description = "The ID of the Public Subnet B"
+}
+
 variable "instance_type" {
   type        = string
   description = "Main EC2 Instance Type"

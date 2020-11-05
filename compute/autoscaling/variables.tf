@@ -48,16 +48,22 @@ variable "asg_desired" {
   default     = 1
 }
 
+variable "cluster_name" {
+  type = string
+}
+
 variable "prv_sub_a_id" {
-  type        = string
-  description = "The ID of the Public Subnet A"
+  type = string
 }
 
 variable "pub_sub_a_id" {
-  type        = string
-  description = "The ID of the Public Subnet A"
+  type = string
 }
 
-variable "cluster_name" {
+variable "pub_sub_b_id" {
+  type = string
+}
+
+variable "prv_sub_b_id" {
   type = string
 }

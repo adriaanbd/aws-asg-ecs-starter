@@ -1,19 +1,23 @@
 variable "namespace" {
-  type        = string
-  description = "Project namespace for unique resource naming"
+  type = string
 }
 
 variable "vpc_id" {
-  type        = string
-  description = "ID of the main VPC"
+  type = string
 }
 
 variable "pub_sub_a_id" {
-  type        = string
-  description = "ID of the Public Subnet A"
+  type = string
 }
 
 variable "prv_sub_a_id" {
-  type        = string
-  description = "ID of the Private Subnet A"
+  type = string
+}
+
+variable "pub_sub_b_id" {
+  type = string
+}
+
+variable "prv_sub_b_id" {
+  type = string
 }
