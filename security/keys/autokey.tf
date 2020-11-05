@@ -15,4 +15,8 @@ resource "local_file" "my_key_file" {
   provisioner "local-exec" {
     command = "chmod 400 ${local_file.my_key_file.filename}"
   }
+
+  provisioner "local-exec" {
+    command = "icacls ${local_file.my_key_file.filename} /inheritance:r & icacls ${local_file.my_key_file.filename} /grant:r \"%username%\":\"(R)\""
+  }
 }
