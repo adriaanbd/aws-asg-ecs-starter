@@ -38,3 +38,9 @@ variable "app_sg_id" {
   type        = string
   description = "A Security Group to be used by the instances in private subnet"
 }
+
+variable "ecs_service_role" {
+  type        = string
+  description = "Name of ECS Role"
+  default     = "ecsInstanceRole"
+}

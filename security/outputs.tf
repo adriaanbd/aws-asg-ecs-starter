@@ -17,3 +17,7 @@ output "app_sg_id" {
 output "ecs_instance_profile_arn" {
   value = module.iam.ecs_instance_profile_arn
 }
+
+output "ecs_service_role" {
+  value = module.iam.ecs_service_role
+}

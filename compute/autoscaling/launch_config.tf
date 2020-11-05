@@ -8,7 +8,8 @@ resource "aws_launch_configuration" "launch_config" {
     create_before_destroy = true
   }
 
-  security_groups         = [var.app_sg_id]
+  security_groups         = [var.bastion_sg_id]
+  # security_groups         = [var.app_sg_id]
   key_name                = var.ssh_key_name
   user_data_base64        = base64encode(
                             <<EOF

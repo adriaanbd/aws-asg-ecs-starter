@@ -1,3 +1,3 @@
-output "launch_config" {
-  value = aws_launch_configuration.launch_config.name
+output "cluster_name" {
+  value = aws_ecs_cluster.cluster.name
 }
