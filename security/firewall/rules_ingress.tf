@@ -16,6 +16,15 @@ resource "aws_security_group_rule" "http_in_bastion" {
   security_group_id = aws_security_group.bastion_sg.id
 }
 
+resource "aws_security_group_rule" "https_in_bastion" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.bastion_sg.id
+}
+
 resource "aws_security_group_rule" "ssh_in_app" {
   type                     = "ingress"
   from_port                = 22
