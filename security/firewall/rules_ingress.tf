@@ -9,6 +9,7 @@ resource "aws_security_group_rule" "ssh_in_bastion" {
 
 resource "aws_security_group_rule" "ssh_in_app" {
   type                     = "ingress"
+  description              = "Allow SSH from a Bastion Security Group"
   from_port                = 22
   to_port                  = 22
   protocol                 = "tcp"
