@@ -17,8 +17,9 @@ module "compute" {
 }
 
 module "security" {
-  source       = "./security"
-  namespace    = var.namespace
-  vpc_id       = module.network.vpc_id
-  ssh_key_name = var.ssh_key_name
+  source        = "./security"
+  namespace     = var.namespace
+  vpc_id        = module.network.vpc_id
+  ssh_key_name  = var.ssh_key_name
+  os_username   = var.os_username_for_ssh_key
 }

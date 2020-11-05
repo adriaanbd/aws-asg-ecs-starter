@@ -7,6 +7,7 @@ module "firewall" {
 module "keys" {
   source       = "./keys"
   ssh_key_name = var.ssh_key_name
+  os_username  = var.os_username
 }
 
 module "iam" {
