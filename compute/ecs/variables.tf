@@ -14,6 +14,12 @@ variable "task_name" {
   default     = "aws-starter-task"
 }
 
+variable "container_name" {
+  type        = string
+  description = "Name of the Docker Container Image for ECS"
+  default     = "aws-starter-container"
+}
+
 variable "service_name" {
   type        = string
   description = "Name of the ECS Service"

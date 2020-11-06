@@ -44,22 +44,22 @@ resource "aws_security_group_rule" "ping_out_app" {
   security_group_id = aws_security_group.app_sg.id
 }
 
-resource "aws_security_group_rule" "http_out_app" {
+resource "aws_security_group_rule" "tcp_out_app" {
   type              = "egress"
-  description       = "Allow HTTP traffic egress from app layer"
-  from_port         = 80
-  to_port           = 80
+  description       = "Allow TCP internet traffic egress from app layer"
+  from_port         = 0
+  to_port           = 65535
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.app_sg.id
 }
 
-resource "aws_security_group_rule" "https_out_app" {
-  type              = "egress"
-  description       = "Allow HTTPS traffic egress from app layer"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.app_sg.id
+resource "aws_security_group_rule" "tcp_out_alb" {
+  type                     = "egress"
+  description              = "Allow all TCP traffic to App Layer"
+  from_port                = 0
+  to_port                  = 65535
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.alb_sg.id
+  source_security_group_id = aws_security_group.app_sg.id
 }

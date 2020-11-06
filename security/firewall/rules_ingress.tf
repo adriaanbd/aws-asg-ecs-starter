@@ -29,7 +29,7 @@ resource "aws_security_group_rule" "ssh_in_app" {
 
 resource "aws_security_group_rule" "http_in_alb" {
   type              = "ingress"
-  description       = "Allow HTTP ingress traffic from ALB"
+  description       = "Allow HTTP ingress internet traffic for ALB"
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "tcp_from_alb" {
   description              = "Allow all TCP ingress traffic from ALB"
   from_port                = 0
   to_port                  = 65535
-  protocol                 = "tcp"
+  protocol                 = "all"
   security_group_id        = aws_security_group.app_sg.id
   source_security_group_id = aws_security_group.alb_sg.id
 }
