@@ -5,4 +5,5 @@ resource "aws_autoscaling_group" "asg_for_ecs" {
   desired_capacity      = var.asg_desired
   vpc_zone_identifier   = [var.prv_sub_a_id, var.prv_sub_b_id]
   launch_configuration  = aws_launch_configuration.launch_config.name
+  # health_check_type     = "ELB"
 }

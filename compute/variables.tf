@@ -49,8 +49,17 @@ variable "app_sg_id" {
   description = "A Security Group to be used by the instances in private subnet"
 }
 
-variable "ecs_service_role" {
+variable "ecs_instance_role" {
   type        = string
   description = "Name of ECS Role"
   default     = "ecsInstanceRole"
+}
+
+variable "ecs_service_role_arn" {
+  type        = string
+  description = "ARN of ECS Service Role"
+}
+
+variable "alb_target_group_arn" {
+  type = string
 }

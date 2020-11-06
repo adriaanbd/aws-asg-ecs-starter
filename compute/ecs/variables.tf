@@ -35,11 +35,19 @@ variable "task_cpu" {
 variable "desired_service_count" {
   type        = number
   description = "The number of instances of the task definition to place and keep running. Defaults to 0."
-  default     = 1
+  default     = 4
 }
 
-variable "service_role" {
+variable "instance_role" {
   type        = string
   description = "Name of the Role to use for ECS"
   default     = "ecsInstanceRole"
+}
+
+variable "service_role_arn" {
+  type        = string
+}
+
+variable "alb_target_group_arn" {
+  type = string
 }

@@ -25,3 +25,14 @@ module "routing" {
   pub_sub_b_id = module.subnets.pub_sub_b_id
   prv_sub_b_id = module.subnets.prv_sub_b_id
 }
+
+module "load_balancing" {
+  source       = "./load_balancing"
+  namespace    = var.namespace
+  vpc_id       = module.vpc.vpc_id
+  pub_sub_a_id = module.subnets.pub_sub_a_id
+  prv_sub_a_id = module.subnets.prv_sub_a_id
+  pub_sub_b_id = module.subnets.pub_sub_b_id
+  prv_sub_b_id = module.subnets.prv_sub_b_id
+  alb_sg_id    = var.alb_sg_id
+}

@@ -32,7 +32,9 @@ module "autoscaling" {
 }
 
 module "ecs" {
-  source        = "./ecs"
-  namespace     = var.namespace
-  service_role  = var.ecs_service_role
+  source               = "./ecs"
+  namespace            = var.namespace
+  instance_role        = var.ecs_instance_role
+  service_role_arn     = var.ecs_service_role_arn
+  alb_target_group_arn = var.alb_target_group_arn 
 }

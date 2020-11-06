@@ -33,19 +33,19 @@ variable "ssh_key_name" {
 variable "asg_min" {
   type        = number
   description = "Minimum number of instances in Autoscaling Group for ECS"
-  default     = 0
+  default     = 1
 }
 
 variable "asg_max" {
   type        = number
   description = "Maximum number of instances in Autoscaling Group for ECS"
-  default     = 3
+  default     = 4
 }
 
 variable "asg_desired" {
   type        = number
   description = "Desired number of instances in Autoscaling Group for ECS"
-  default     = 1
+  default     = 2
 }
 
 variable "cluster_name" {

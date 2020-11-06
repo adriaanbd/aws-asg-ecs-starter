@@ -1,6 +1,7 @@
 module "network" {
   source    = "./network"
   namespace = "${var.namespace}-network"
+  alb_sg_id = module.security.alb_sg_id
 }
 
 module "compute" {
@@ -11,7 +12,9 @@ module "compute" {
   bastion_sg_id            = module.security.bastion_sg_id
   app_sg_id                = module.security.app_sg_id
   ecs_instance_profile_arn = module.security.ecs_instance_profile_arn
-  ecs_service_role         = module.security.ecs_service_role
+  ecs_instance_role        = module.security.ecs_instance_role
+  ecs_service_role_arn     = module.security.ecs_service_role_arn
+  alb_target_group_arn     = module.network.alb_target_group_arn
   pub_sub_a_id             = module.network.pub_sub_a_id
   prv_sub_a_id             = module.network.prv_sub_a_id
   pub_sub_b_id             = module.network.pub_sub_b_id

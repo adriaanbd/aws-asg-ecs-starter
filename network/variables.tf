@@ -44,3 +44,8 @@ variable "az_b" {
   description = "Availability Zone for Subnets B"
   default     = "us-east-1b"
 }
+
+variable "alb_sg_id" {
+  type = string
+  description = "ID of the Security Group of the Load Balancer"
+}
