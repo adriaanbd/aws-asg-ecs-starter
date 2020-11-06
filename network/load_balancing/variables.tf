@@ -15,5 +15,5 @@ variable "pub_sub_b_id" {
 }
 
 variable "alb_sg_id" {
-  type        = string
+  type = string
 }

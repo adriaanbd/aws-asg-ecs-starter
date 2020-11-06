@@ -38,10 +38,10 @@ variable "task_cpu" {
   default     = 250
 }
 
-variable "desired_service_count" {
+variable "desired_tasks" {
   type        = number
   description = "The number of instances of the task definition to place and keep running. Defaults to 0."
-  default     = 4
+  default     = 3
 }
 
 variable "instance_role" {
@@ -56,4 +56,14 @@ variable "service_role_arn" {
 
 variable "alb_target_group_arn" {
   type = string
+}
+
+variable "min_healthy_percent" {
+  type        = number
+  description = "Lower limit on the number of running tasks during a deployment"
+}
+
+variable "max_percent" {
+  type        = number
+  description = "Upper limit on the number of running tasks during a deployment"
 }
