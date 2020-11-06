@@ -61,9 +61,11 @@ variable "alb_target_group_arn" {
 variable "min_healthy_percent" {
   type        = number
   description = "Lower limit on the number of running tasks during a deployment"
+  default     = 0
 }
 
 variable "max_percent" {
   type        = number
   description = "Upper limit on the number of running tasks during a deployment"
+  default     = 200
 }
