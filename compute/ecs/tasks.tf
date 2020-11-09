@@ -3,6 +3,4 @@ resource "aws_ecs_task_definition" "task" {
   family                   = var.task_name
   container_definitions    = file("${path.module}/container_def.json")
   requires_compatibilities = ["EC2"]
-  # memory                   = var.task_memory
-  # cpu                      = var.task_cpu
 }

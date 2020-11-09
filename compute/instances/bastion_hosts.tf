@@ -9,4 +9,3 @@ resource "aws_instance" "bastion_a" {
     Environemnt = "dev"
   }
 }
-
