@@ -1,26 +1,22 @@
-######################
-###     TABLES    ###
-#####################
-
-resource "aws_route_table" "priv_rt_a" {
+resource "aws_route_table" "priv_rt" {
   vpc_id = var.vpc_id
+
+  count = length(var.prv_sub_ids)
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.ngw_a.id
+    nat_gateway_id = aws_nat_gateway.ngw.*.id[count.index]
   }
 
   tags = {
-    Name        = "${var.namespace}-priv_rt_a"
+    Name        = "${var.namespace}-priv_rt_${count.index + 1}"
     Environment = "dev"
   }
 }
 
-####################
-### ASSOCIATIONS ###
-####################
+resource "aws_route_table_association" "prv_rt_assoc" {
+  count          = length(var.prv_sub_ids)
 
-resource "aws_route_table_association" "priv_rt_assoc_a" {
-  subnet_id      = var.prv_sub_a_id
-  route_table_id = aws_route_table.priv_rt_a.id
+  subnet_id      = var.prv_sub_ids[count.index]
+  route_table_id = aws_route_table.prv_rt.*.id[count.index]
 }

@@ -1,8 +1,4 @@
-#######################
-###     TABLES      ###
-#######################
-
-resource "aws_route_table" "pub_rt_a" {
+resource "aws_route_table" "pub_rt" {
   vpc_id = var.vpc_id
 
   route {
@@ -10,36 +6,17 @@ resource "aws_route_table" "pub_rt_a" {
     gateway_id = aws_internet_gateway.igw.id
   }
 
+  count = length(var.pub_sub_ids)
+
   tags = {
-    Name        = "${var.namespace}-pub_rt_a"
+    Name        = "${var.namespace}-pub_rt_${count.index + 1}"
     Environment = "dev"
   }
 }
 
-resource "aws_route_table" "pub_rt_b" {
-  vpc_id = var.vpc_id
+resource "aws_route_table_association" "rt_assoc" {
+  count          = length(var.pub_sub_ids)
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-  }
-
-  tags = {
-    Name        = "${var.namespace}-pub_rt_b"
-    Environment = "dev"
-  }
-}
-
-####################
-### ASSOCIATIONS ###
-####################
-
-resource "aws_route_table_association" "rt_assoc_a" {
-  subnet_id      = var.pub_sub_a_id
-  route_table_id = aws_route_table.pub_rt_a.id
-}
-
-resource "aws_route_table_association" "rt_assoc_b" {
-  subnet_id      = var.pub_sub_b_id
-  route_table_id = aws_route_table.pub_rt_b.id
+  subnet_id      = var.pub_sub_ids[count.index]
+  route_table_id = aws_route_table.pub_rt.*.id[count.index]
 }
