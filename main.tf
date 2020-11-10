@@ -1,7 +1,9 @@
 module "network" {
-  source    = "./network"
-  namespace = "${var.namespace}-network"
-  alb_sg_id = module.security.alb_sg_id
+  source        = "./network"
+  namespace     = "${var.namespace}-network"
+  pub_sub_cidrs = var.pub_sub_cidrs
+  prv_sub_cidrs = var.prv_sub_cidrs
+  alb_sg_id     = module.security.alb_sg_id
 }
 
 module "compute" {
@@ -15,8 +17,8 @@ module "compute" {
   ecs_instance_role        = module.security.ecs_instance_role
   ecs_service_role_arn     = module.security.ecs_service_role_arn
   alb_target_group_arn     = module.network.alb_target_group_arn
-  pub_subnet_ids           = module.network.pub_subnet_ids
-  prv_subnet_ids           = module.network.prv_subnet_ids
+  pub_sub_ids              = module.network.pub_sub_ids
+  prv_sub_ids              = module.network.prv_sub_ids
 }
 
 module "security" {

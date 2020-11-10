@@ -3,7 +3,7 @@ resource "aws_instance" "bastion" {
   instance_type          = var.instance_type
   key_name               = var.ssh_key_name
 
-  count                  = var.bastions_per_subnet
+  count                  = length(var.pub_sub_ids)
 
   subnet_id              = var.pub_sub_ids[count.index]
   vpc_security_group_ids = [var.bastion_sg_id]

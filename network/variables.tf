@@ -9,40 +9,43 @@ variable "vpc_cidr" {
   default     = "172.16.0.0/16"
 }
 
-variable "pub_cidr_a" {
-  description = "The CIDR block for Public Subnet"
-  type        = string
-  default     = "172.16.1.0/24"
+variable "subnets_per_vpc" {
+  type        = number
+  description = "Number of desired subnets in the VPC"
+  default     = 3
 }
 
-variable "prv_cidr_a" {
-  description = "The CIDR block for Private Subnet"
-  type        = string
-  default     = "172.16.4.0/24"
+variable "pub_sub_cidrs" {
+  description = "Available cidr blocks for public subnets"
+  type        = list(string)
+  default = [
+    "10.0.1.0/24",
+    "10.0.2.0/24",
+    "10.0.3.0/24",
+    "10.0.10.0/24"
+  ]
 }
 
-variable "az_a" {
-  description = "AWS Availability Zone"
-  default     = "us-east-1a"
-  type        = string
+variable "prv_sub_cidrs" {
+  description = "Available cidr blocks for private subnets"
+  type        = list(string)
+  default = [
+    "10.0.4.0/24",
+    "10.0.5.0/24",
+    "10.0.6.0/24",
+    "10.0.11.0/24"
+  ]
 }
 
-variable "pub_cidr_b" {
-  type        = string
-  description = "The CIDR block for Public Subnet"
-  default     = "172.16.2.0/24"
-}
-
-variable "prv_cidr_b" {
-  type        = string
-  description = "The CIDR block for Private Subnet"
-  default     = "172.16.3.0/24"
-}
-
-variable "az_b" {
-  type        = string
-  description = "Availability Zone for Subnets B"
-  default     = "us-east-1b"
+variable "ddbb_sub_cidrs" {
+  description = "Available cidr blocks for database subnets"
+  type        = list(string)
+  default = [
+    "10.0.7.0/24",
+    "10.0.8.0/24",
+    "10.0.9.0/24",
+    "10.0.12.0/24"
+  ]
 }
 
 variable "alb_sg_id" {

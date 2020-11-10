@@ -1,7 +1,3 @@
-###########################
-###   SECURITY GROUPS   ###
-###########################
-
 resource "aws_security_group" "bastion_sg" {
   name        = var.bastion_sg
   description = "A Security Group allowing to SSH ingress, HTTP egress and Ping egress"

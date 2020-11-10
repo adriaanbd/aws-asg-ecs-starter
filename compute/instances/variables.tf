@@ -29,7 +29,6 @@ variable "app_sg_id" {
   description = "ID of the Security Group for App Host"
 }
 
-variable "bastions_per_subnet" {
-  type        = number
-  description = "Number of Bastion instances per Subnet"
+variable "pub_sub_ids" {
+  type = list(string)
 }

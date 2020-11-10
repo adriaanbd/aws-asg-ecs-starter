@@ -44,3 +44,8 @@ variable "subnets_per_vpc" {
   description = "Number of subnets per VPC"
   default     = 3
 }
+
+variable "azs" {
+  type = list(string)
+  description = "List of Availability Zones in this network"
+}

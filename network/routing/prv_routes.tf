@@ -1,4 +1,4 @@
-resource "aws_route_table" "priv_rt" {
+resource "aws_route_table" "prv_rt" {
   vpc_id = var.vpc_id
 
   count = length(var.prv_sub_ids)
