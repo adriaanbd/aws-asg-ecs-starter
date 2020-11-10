@@ -3,7 +3,7 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.alb_sg_id]
-  subnets            = [var.pub_sub_a_id, var.pub_sub_b_id]
+  subnets            = var.pub_sub_ids
   ip_address_type    = "ipv4"
 
   tags = {
