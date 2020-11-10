@@ -23,10 +23,7 @@ module "autoscaling" {
   app_sg_id     = var.app_sg_id
   bastion_sg_id = var.bastion_sg_id
   cluster_name  = module.ecs.cluster_name
-  prv_sub_a_id  = var.prv_sub_a_id
-  pub_sub_a_id  = var.pub_sub_a_id
-  prv_sub_b_id  = var.prv_sub_b_id
-  pub_sub_b_id  = var.pub_sub_b_id
+  prv_sub_ids   = var.prv_sub_ids
 }
 
 module "ecs" {
