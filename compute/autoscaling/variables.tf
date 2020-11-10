@@ -24,6 +24,10 @@ variable "bastion_sg_id" {
   type = string
 }
 
+variable "general_sg_id" {
+  type = string
+}
+
 variable "ssh_key_name" {
   type        = string
   description = "Key name to SSH into ECS instances"

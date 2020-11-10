@@ -29,3 +29,7 @@ output "app_sg_id" {
 output "alb_sg_id" {
   value = module.firewall.alb_sg_id
 }
+
+output "general_sg_id" {
+  value = module.firewall.general_sg_id
+}

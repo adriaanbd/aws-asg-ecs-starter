@@ -1,5 +1,31 @@
-# https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
-resource "aws_security_group_rule" "ssh_out_bastion" {
+resource "aws_security_group_rule" "out_ping" {
+  type              = "egress"
+  from_port         = 8 # echo request
+  to_port           = 0 # echo reply
+  protocol          = "icmp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.general_sg.id
+}
+
+resource "aws_security_group_rule" "out_http" {
+  type              = "egress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.general_sg.id
+}
+
+resource "aws_security_group_rule" "out_https" {
+  type              = "egress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.general_sg.id
+}
+
+resource "aws_security_group_rule" "out_ssh_bastion" {
   type                     = "egress"
   from_port                = 22
   to_port                  = 22
@@ -8,43 +34,8 @@ resource "aws_security_group_rule" "ssh_out_bastion" {
   source_security_group_id = aws_security_group.app_sg.id
 }
 
-resource "aws_security_group_rule" "ping_out_bastion" {
-  type              = "egress"
-  from_port         = 8 # echo request
-  to_port           = 0 # echo reply
-  protocol          = "icmp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.bastion_sg.id
-}
 
-resource "aws_security_group_rule" "http_out_bastion" {
-  type              = "egress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.bastion_sg.id
-}
-
-resource "aws_security_group_rule" "https_out_bastion" {
-  type              = "egress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.bastion_sg.id
-}
-
-resource "aws_security_group_rule" "ping_out_app" {
-  type              = "egress"
-  from_port         = 8 # echo request
-  to_port           = 0 # echo reply
-  protocol          = "icmp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.app_sg.id
-}
-
-resource "aws_security_group_rule" "tcp_out_app" {
+resource "aws_security_group_rule" "out_internet_app" {
   type              = "egress"
   description       = "Allow TCP internet traffic egress from app layer"
   from_port         = 0
@@ -54,7 +45,7 @@ resource "aws_security_group_rule" "tcp_out_app" {
   security_group_id = aws_security_group.app_sg.id
 }
 
-resource "aws_security_group_rule" "tcp_out_alb" {
+resource "aws_security_group_rule" "out_internet_alb" {
   type                     = "egress"
   description              = "Allow all TCP traffic to App Layer"
   from_port                = 0

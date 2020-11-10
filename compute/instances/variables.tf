@@ -21,12 +21,14 @@ variable "ssh_key_name" {
 
 variable "bastion_sg_id" {
   type        = string
-  description = "ID of the Security Group for Bastion Host"
+}
+
+variable "general_sg_id" {
+  type = string
 }
 
 variable "app_sg_id" {
   type        = string
-  description = "ID of the Security Group for App Host"
 }
 
 variable "pub_sub_ids" {

@@ -13,6 +13,7 @@ module "compute" {
   ssh_key_name             = var.ssh_key_name
   bastion_sg_id            = module.security.bastion_sg_id
   app_sg_id                = module.security.app_sg_id
+  general_sg_id            = module.security.general_sg_id
   ecs_instance_profile_arn = module.security.ecs_instance_profile_arn
   ecs_instance_role        = module.security.ecs_instance_role
   ecs_service_role_arn     = module.security.ecs_service_role_arn

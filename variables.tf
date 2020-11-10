@@ -25,10 +25,10 @@ variable "pub_sub_cidrs" {
   description = "Available cidr blocks for public subnets"
   type        = list(string)
   default = [
-    "10.0.1.0/24",
-    "10.0.2.0/24",
-    "10.0.3.0/24",
-    "10.0.10.0/24"
+    "172.16.1.0/24",
+    "172.16.2.0/24",
+    "172.16.3.0/24",
+    "172.16.10.0/24"
   ]
 }
 
@@ -36,10 +36,10 @@ variable "prv_sub_cidrs" {
   description = "Available cidr blocks for private subnets"
   type        = list(string)
   default = [
-    "10.0.4.0/24",
-    "10.0.5.0/24",
-    "10.0.6.0/24",
-    "10.0.11.0/24"
+    "172.16.4.0/24",
+    "172.16.5.0/24",
+    "172.16.6.0/24",
+    "172.16.11.0/24"
   ]
 }
 
@@ -47,9 +47,9 @@ variable "ddbb_sub_cidrs" {
   description = "Available cidr blocks for database subnets"
   type        = list(string)
   default = [
-    "10.0.7.0/24",
-    "10.0.8.0/24",
-    "10.0.9.0/24",
-    "10.0.12.0/24"
+    "172.16.7.0/24",
+    "172.16.8.0/24",
+    "172.16.9.0/24",
+    "172.16.12.0/24"
   ]
 }
