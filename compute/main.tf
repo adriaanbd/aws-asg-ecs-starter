@@ -1,13 +1,11 @@
 module "instances" {
-  source         = "./instances"
-  namespace      = var.namespace
-  instance_type  = var.instance_type
-  ami_linux_2_id = module.data.ami_linux_2_id
-  ssh_key_name   = var.ssh_key_name
-  bastion_sg_id  = var.bastion_sg_id
-  app_sg_id      = var.app_sg_id
-  pub_sub_a_id   = var.pub_sub_a_id
-  prv_sub_a_id   = var.prv_sub_a_id
+  source              = "./instances"
+  namespace           = var.namespace
+  instance_type       = var.instance_type
+  ami_linux_2_id      = module.data.ami_linux_2_id
+  ssh_key_name        = var.ssh_key_name
+  bastion_sg_id       = var.bastion_sg_id
+  bastions_per_subnet = length(var.pub_sub_ids)
 }
 
 module "data" {

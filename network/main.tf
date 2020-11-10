@@ -12,7 +12,7 @@ module "subnets" {
   source     = "./subnets"
   namespace  = var.namespace
   vpc_id     = module.vpc.vpc_id
-  azs        = slice(data.aws_availability_zones.zonde_ids, 0, var.subnets_per_vpc)
+  azs        = slice(data.aws_availability_zones.zone_ids, 0, var.subnets_per_vpc)
   pub_cidrs  = slice(var.pub_sub_cidrs, 0, var.subnets_per_vpc)
   prv_cidrs  = slice(var.prv_sub_cidrs, 0, var.subnets_per_vpc)
 }

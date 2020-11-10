@@ -15,10 +15,8 @@ module "compute" {
   ecs_instance_role        = module.security.ecs_instance_role
   ecs_service_role_arn     = module.security.ecs_service_role_arn
   alb_target_group_arn     = module.network.alb_target_group_arn
-  pub_sub_a_id             = module.network.pub_sub_a_id
-  prv_sub_a_id             = module.network.prv_sub_a_id
-  pub_sub_b_id             = module.network.pub_sub_b_id
-  prv_sub_b_id             = module.network.prv_sub_b_id
+  pub_subnet_ids           = module.network.pub_subnet_ids
+  prv_subnet_ids           = module.network.prv_subnet_ids
 }
 
 module "security" {

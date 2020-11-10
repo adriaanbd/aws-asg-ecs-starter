@@ -14,14 +14,9 @@ variable "ami_linux_2_id" {
   description = "ID of the Linux 2 AMI from SSM"
 }
 
-variable "pub_sub_a_id" {
+variable "ssh_key_name" {
   type        = string
-  description = "ID of the Public Subnet A"
-}
-
-variable "prv_sub_a_id" {
-  type        = string
-  description = "ID of the Private Subnet A"
+  description = "Key Name of the Generated AWS Key Pair"
 }
 
 variable "bastion_sg_id" {
@@ -34,7 +29,7 @@ variable "app_sg_id" {
   description = "ID of the Security Group for App Host"
 }
 
-variable "ssh_key_name" {
-  type        = string
-  description = "Key Name of the Generated AWS Key Pair"
+variable "bastions_per_subnet" {
+  type        = number
+  description = "Number of Bastion instances per Subnet"
 }

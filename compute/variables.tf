@@ -2,26 +2,6 @@ variable "namespace" {
   type        = string
 }
 
-variable "pub_sub_a_id" {
-  type        = string
-  description = "The ID of the Public Subnet A"
-}
-
-variable "prv_sub_a_id" {
-  type        = string
-  description = "The ID of the Public Subnet A"
-}
-
-variable "pub_sub_b_id" {
-  type        = string
-  description = "The ID of the Public Subnet B"
-}
-
-variable "prv_sub_b_id" {
-  type        = string
-  description = "The ID of the Public Subnet B"
-}
-
 variable "instance_type" {
   type        = string
   description = "Main EC2 Instance Type"
@@ -62,4 +42,12 @@ variable "ecs_service_role_arn" {
 
 variable "alb_target_group_arn" {
   type = string
+}
+
+variable "pub_sub_ids" {
+  type = list(string)
+}
+
+variable "prv_sub_ids" {
+  type = list(string)
 }
