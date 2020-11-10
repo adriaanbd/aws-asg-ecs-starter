@@ -1,3 +1,7 @@
+data "aws_availability_zones" "azs" {
+  state = "available"
+}
+
 module "vpc" {
   source    = "./vpc"
   namespace = var.namespace
@@ -6,14 +10,11 @@ module "vpc" {
 
 module "subnets" {
   source     = "./subnets"
-  namespace = var.namespace
+  namespace  = var.namespace
   vpc_id     = module.vpc.vpc_id
-  pub_cidr_a = var.pub_cidr_a
-  prv_cidr_a = var.prv_cidr_a
-  az_a       = var.az_a
-  pub_cidr_b = var.pub_cidr_b
-  prv_cidr_b = var.prv_cidr_b
-  az_b       = var.az_b
+  azs        = slice(data.aws_availability_zones.zonde_ids, 0, var.subnets_per_vpc)
+  pub_cidrs  = slice(var.pub_sub_cidrs, 0, var.subnets_per_vpc)
+  prv_cidrs  = slice(var.prv_sub_cidrs, 0, var.subnets_per_vpc)
 }
 
 module "routing" {
