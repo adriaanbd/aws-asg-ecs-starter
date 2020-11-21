@@ -1,7 +1,7 @@
 [
   {
     "name": "aws-starter-container",
-    "image": "httpd:2.4",
+    "image": "${var.image_name}",
     "memory": 300,
     "portMappings": [
       {

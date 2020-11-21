@@ -29,3 +29,13 @@ module "security" {
   ssh_key_name  = var.ssh_key_name
   os_username   = var.os_username_for_ssh_key
 }
+
+module "cicd" {
+  source                     = "./cicd"
+  name                       = var.namespace
+  aws_region                 = var.region
+  alb_name                   = module.network.alb_name
+  blue_lb_target_group_name  = module.network.blue_lb_target_group_name
+  green_lb_target_group_name = module.network.green_lb_target_group_name
+  ecr_repo                   = module.cicd.ecr_repo_url
+}

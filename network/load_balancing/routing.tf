@@ -1,14 +1,23 @@
 # Amazon ECS handles target registration ###
-resource "aws_lb_target_group" "client" {
-  name        = "aws-starter-alb-target"
+resource "aws_lb_target_group" "blue" {
+  name        = "aws-starter-alb-target-blue"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
   target_type = "instance"
-  depends_on = [aws_lb.alb]
+  depends_on  = [aws_lb.alb]
 }
 
-resource "aws_lb_listener" "client_fwd" {
+resource "aws_lb_target_group" "green" {
+  name        = "aws-starter-alb-target-green"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "instance"
+  depends_on  = [aws_lb.alb]
+}
+
+resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.alb.arn
   port              = 80
   protocol          = "HTTP"

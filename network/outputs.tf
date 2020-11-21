@@ -19,6 +19,19 @@ output "alb_dns_name" {
   value       = module.load_balancing.alb_dns_name
 }
 
+output "alb_name" {
+  description = "The name of the application load balancer"
+  value = module.load_balancing.alb_name
+}
+
+output "blue_lb_target_group_name" {
+  value = module.load_balancing.blue_lb_target_group_name
+}
+
+output "green_lb_target_group_name" {
+  value = module.load_balancing.green_lb_target_group_name
+}
+
 output "available_azs" {
   value = module.subnets.available_azs
 }

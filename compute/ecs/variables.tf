@@ -20,6 +20,10 @@ variable "container_name" {
   default     = "aws-starter-container"
 }
 
+variable "image_name" {
+  type = string
+}
+
 variable "service_name" {
   type        = string
   description = "Name of the ECS Service"
