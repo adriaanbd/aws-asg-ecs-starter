@@ -10,9 +10,9 @@ output "prv_sub_ids" {
   value = module.subnets.prv_sub_ids
 }
 
-output "alb_target_group_arn" {
-  value = module.load_balancing.alb_target_group_arn
-}
+# output "alb_target_group_arn" {
+#   value = module.load_balancing.alb_target_group_arn
+# }
 
 output "alb_dns_name" {
   description = "The DNS name of the load balancer."
@@ -20,8 +20,11 @@ output "alb_dns_name" {
 }
 
 output "alb_name" {
-  description = "The name of the application load balancer"
   value = module.load_balancing.alb_name
+}
+
+output "alb_http_listener_arn" {
+  value = module.load_balancing.alb_http_listener_arn
 }
 
 output "blue_lb_target_group_name" {
@@ -30,6 +33,14 @@ output "blue_lb_target_group_name" {
 
 output "green_lb_target_group_name" {
   value = module.load_balancing.green_lb_target_group_name
+}
+
+output "alb_blue_target_group_arn" {
+  value = module.load_balancing.alb_blue_target_group_arn
+}
+
+output "alb_green_target_group_arn" {
+  value = module.load_balancing.alb_green_target_group_arn
 }
 
 output "available_azs" {

@@ -20,7 +20,7 @@ variable "container_name" {
   default     = "aws-starter-container"
 }
 
-variable "image_name" {
+variable "ecr_repo_name" {
   type = string
 }
 
@@ -58,7 +58,11 @@ variable "service_role_arn" {
   type        = string
 }
 
-variable "alb_target_group_arn" {
+variable "alb_blue_target_group_arn" {
+  type = string
+}
+
+variable "alb_green_target_group_arn" {
   type = string
 }
 
@@ -73,3 +77,8 @@ variable "max_percent" {
   description = "Upper limit on the number of running tasks during a deployment"
   default     = 200
 }
+
+variable "label" {
+  type = string
+}
+

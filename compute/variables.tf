@@ -44,7 +44,11 @@ variable "ecs_service_role_arn" {
   description = "ARN of ECS Service Role"
 }
 
-variable "alb_target_group_arn" {
+variable "alb_blue_target_group_arn" {
+  type = string
+}
+
+variable "alb_green_target_group_arn" {
   type = string
 }
 
@@ -54,4 +58,12 @@ variable "pub_sub_ids" {
 
 variable "prv_sub_ids" {
   type = list(string)
+}
+
+variable "ecr_repo_name" {
+  type = string
+}
+
+variable "label" {
+  type = string
 }

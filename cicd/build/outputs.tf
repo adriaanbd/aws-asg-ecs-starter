@@ -7,5 +7,5 @@ output "project_name" {
 }
 
 output "ecr_repo_url" {
-  value = aws_ecr_repository.app.repositor_url
+  value = aws_ecr_repository.app.repository_url
 }

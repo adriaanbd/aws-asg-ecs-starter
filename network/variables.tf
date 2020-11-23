@@ -52,3 +52,7 @@ variable "alb_sg_id" {
   type = string
   description = "ID of the Security Group of the Load Balancer"
 }
+
+variable "label" {
+  type = string
+}

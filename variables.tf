@@ -53,3 +53,9 @@ variable "ddbb_sub_cidrs" {
     "172.16.12.0/24"
   ]
 }
+
+variable "bg_label" {
+  type        = string
+  description = "Blue OR Green label for Blue/Green Deployment"
+  default     = "blue"
+}

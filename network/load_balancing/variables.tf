@@ -13,3 +13,7 @@ variable "pub_sub_ids" {
 variable "alb_sg_id" {
   type = string
 }
+
+variable "label" {
+  type = string
+}

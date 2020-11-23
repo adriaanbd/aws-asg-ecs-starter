@@ -1,5 +1,5 @@
-terraform {
-  backend "s3" {
-    key = "aws-starter"
-  }
-}
+# terraform {
+#   backend "s3" {
+#     key = "aws-starter"
+#   }
+# }

@@ -32,4 +32,5 @@ module "load_balancing" {
   vpc_id       = module.vpc.vpc_id
   pub_sub_ids  = module.subnets.pub_sub_ids
   alb_sg_id    = var.alb_sg_id
+  label        = var.label
 }

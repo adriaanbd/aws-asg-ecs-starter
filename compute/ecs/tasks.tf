@@ -3,4 +3,5 @@ resource "aws_ecs_task_definition" "task" {
   family                   = var.task_name
   requires_compatibilities = ["EC2"]
   container_definitions    = file("${path.module}/container_def.json")
+  # task role arn and execution role arn?
 }

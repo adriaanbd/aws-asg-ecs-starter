@@ -41,8 +41,8 @@ module "pipeline" {
 }
 
 module "deploy" {
-  source   = "./deploy"
-  # alb_name = var.alb_name
+  source                     = "./deploy"
+  name                       = var.name
   ecs_service_name           = var.ecs_service_name
   ecs_cluster_name           = var.ecs_cluster_name
   lb_listener_arns           = [var.alb_http_listener_arn]
