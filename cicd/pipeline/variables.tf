@@ -12,3 +12,11 @@ variable "source_repo_name" {
   description = "Git Repository Name"
   default     = "node-web-app"
 }
+
+variable "codedeploy_app_name" {
+  type = string
+}
+
+variable "codedeploy_group_name" {
+  type = string
+}

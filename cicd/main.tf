@@ -14,11 +14,11 @@ data "aws_ssm_parameter" "dockerhub_password_param" {
 locals {
   dockerhub_params = {
     username = {
-      arn  = data.aws_ssm_parameter.dockerhub_username_param.arn, 
+      arn  = data.aws_ssm_parameter.dockerhub_username_param.arn,
       val  = data.aws_ssm_parameter.dockerhub_username_param.value
     }
     password = {
-      arn  = data.aws_ssm_parameter.dockerhub_password_param.arn, 
+      arn  = data.aws_ssm_parameter.dockerhub_password_param.arn,
       val  = data.aws_ssm_parameter.dockerhub_password_param.value
     }
   }
@@ -34,11 +34,6 @@ module "build" {
   pipeline_bucket_arn = module.pipeline.bucket_arn
 }
 
-module "pipeline" {
-  source             = "./pipeline"
-  name               = var.name
-  build_project_name = module.build.project_name
-}
 
 module "deploy" {
   source                     = "./deploy"
@@ -48,4 +43,12 @@ module "deploy" {
   lb_listener_arns           = [var.alb_http_listener_arn]
   blue_lb_target_group_name  = var.blue_lb_target_group_name
   green_lb_target_group_name = var.green_lb_target_group_name
+}
+
+module "pipeline" {
+  source                = "./pipeline"
+  name                  = var.name
+  build_project_name    = module.build.project_name
+  codedeploy_app_name   = module.deploy.codedeploy_app_name
+  codedeploy_group_name = module.deploy.codedeploy_group_name
 }
