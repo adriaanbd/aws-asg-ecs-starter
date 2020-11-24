@@ -34,7 +34,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
           "codecommit:GetBranch",
           "codecommit:GetCommit",
           "codecommit:UploadArchive",
-          "codecommit:GetUploadArchiveStatus",      
+          "codecommit:GetUploadArchiveStatus",
           "codecommit:CancelUploadArchive"
       ]
     },
@@ -58,8 +58,22 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "codebuild:StartBuild"
       ],
       "Resource": "*"
+    },
+    {
+    "Effect": "Allow",
+    "Action": [
+      "codedeploy:CreateDeployment",
+      "codedeploy:GetDeployment",
+      "codedeploy:GetApplication",
+      "codedeploy:GetApplicationRevision",
+      "codedeploy:RegisterApplicationRevision",
+      "codedeploy:GetDeploymentConfig",
+      "ecs:RegisterTaskDefinition",
+      "iam:PassRole"
+    ],
+    "Resource": "*"
     }
   ]
 }
 EOF
-} 
+}

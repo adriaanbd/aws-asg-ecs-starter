@@ -2,6 +2,14 @@
 resource "aws_ecs_task_definition" "task" {
   family                   = var.task_name
   requires_compatibilities = ["EC2"]
-  container_definitions    = file("${path.module}/container_def.json")
-  # task role arn and execution role arn?
+  container_definitions    = jsonencode([{
+    "name"= "aws-starter-container",
+    "image"= "${var.ecr_repo_url}:latest",
+    "memory"= 300,
+    "portMappings"= [
+      {
+        "containerPort"= 80
+      }
+    ]
+  }])
 }

@@ -60,10 +60,14 @@ variable "prv_sub_ids" {
   type = list(string)
 }
 
-variable "ecr_repo_name" {
+variable "ecr_repo_url" {
   type = string
 }
 
 variable "label" {
   type = string
 }
+
+# variable "ecr_image_name" {
+#   type = string
+# }

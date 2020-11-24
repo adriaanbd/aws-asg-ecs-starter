@@ -41,10 +41,6 @@ resource "aws_codedeploy_deployment_group" "this" {
       wait_time_in_minutes = 0
     }
 
-    green_fleet_provisioning_option {
-      action = "DISCOVER_EXISTING"
-    }
-
     terminate_blue_instances_on_deployment_success {
       action = "TERMINATE"
       termination_wait_time_in_minutes = 5

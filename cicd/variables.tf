@@ -26,10 +26,6 @@ variable "dockerhub_params" {
   }
 }
 
-# variable "alb_name" {
-#   type        = string
-# }
-
 variable "ecs_service_name" {
   type = string
 }

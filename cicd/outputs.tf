@@ -12,11 +12,11 @@ output "codecommit_arn" {
 output "dockerhub_params" {
   value = {
     username = {
-      arn  = data.aws_ssm_parameter.dockerhub_username_param.arn, 
+      arn  = data.aws_ssm_parameter.dockerhub_username_param.arn,
       name = data.aws_ssm_parameter.dockerhub_username_param.name
     }
     password = {
-      arn  = data.aws_ssm_parameter.dockerhub_password_param.arn, 
+      arn  = data.aws_ssm_parameter.dockerhub_password_param.arn,
       name = data.aws_ssm_parameter.dockerhub_password_param.name
     }
   }
@@ -24,4 +24,8 @@ output "dockerhub_params" {
 
 output "ecr_repo_url" {
   value = module.build.ecr_repo_url
+}
+
+output "ecr_image_name" {
+  value = module.build.ecr_image_name
 }

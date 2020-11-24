@@ -22,7 +22,8 @@ module "compute" {
   alb_green_target_group_arn = module.network.alb_green_target_group_arn
   pub_sub_ids                = module.network.pub_sub_ids
   prv_sub_ids                = module.network.prv_sub_ids
-  ecr_repo_name              = module.cicd.ecr_repo_url
+  ecr_repo_url               = module.cicd.ecr_repo_url
+  # ecr_image_name             = module.cicd.ecr_image_name
   label                      = var.bg_label
 }
 

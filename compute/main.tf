@@ -34,8 +34,8 @@ module "ecs" {
   namespace                  = var.namespace
   instance_role              = var.ecs_instance_role
   service_role_arn           = var.ecs_service_role_arn
-  alb_blue_target_group_arn  = var.alb_blue_target_group_arn 
+  alb_blue_target_group_arn  = var.alb_blue_target_group_arn
   alb_green_target_group_arn = var.alb_green_target_group_arn
-  ecr_repo_name              = var.ecr_repo_name
+  ecr_repo_url               = var.ecr_repo_url
   label                      = var.label
 }

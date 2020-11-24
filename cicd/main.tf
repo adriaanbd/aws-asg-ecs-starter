@@ -4,11 +4,11 @@ data "aws_kms_alias" "ssm_key" {
 }
 data "aws_ssm_parameter" "dockerhub_username_param" {
   name            = var.dockerhub_params.username
-  with_decryption = false
+  with_decryption = true
 }
 data "aws_ssm_parameter" "dockerhub_password_param" {
   name            = var.dockerhub_params.password
-  with_decryption = false
+  with_decryption = true
 }
 
 locals {
@@ -33,7 +33,6 @@ module "build" {
   dockerhub_params    = local.dockerhub_params
   pipeline_bucket_arn = module.pipeline.bucket_arn
 }
-
 
 module "deploy" {
   source                     = "./deploy"
