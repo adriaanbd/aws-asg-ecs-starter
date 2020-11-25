@@ -16,7 +16,7 @@ resource "aws_codepipeline" "codepipeline" {
       owner            = "AWS"
       provider         = "CodeCommit"
       version          = "1"
-      output_artifacts = ["source_output"]
+      output_artifacts = ["SourceArtifact"]
 
       configuration = {
         RepositoryName        = "node-web-app"
@@ -33,8 +33,8 @@ resource "aws_codepipeline" "codepipeline" {
       category         = "Build"
       owner            = "AWS"
       provider         = "CodeBuild"
-      input_artifacts  = ["source_output"]
-      output_artifacts = ["build_output"]
+      input_artifacts  = ["SourceArtifact"]
+      output_artifacts = ["BuildArtifact"]
       version          = "1"
 
       configuration = {
@@ -50,13 +50,13 @@ resource "aws_codepipeline" "codepipeline" {
       category        = "Deploy"
       owner           = "AWS"
       provider        = "CodeDeployToECS"
-      input_artifacts = ["build_output"]
+      input_artifacts = ["BuildArtifact"]
       version         = "1"
       configuration = {
         ApplicationName                = var.codedeploy_app_name
         DeploymentGroupName            = var.codedeploy_group_name
-        TaskDefinitionTemplateArtifact = "source_output"
-        AppSpecTemplateArtifact        = "source_output"
+        TaskDefinitionTemplateArtifact = "BuildArtifact"
+        AppSpecTemplateArtifact        = "BuildArtifact"
       }
     }
   }
