@@ -36,6 +36,7 @@ module "build" {
   pipeline_role_arn      = module.pipeline.pipeline_role_arn
   task_definition_arn    = var.task_definition_arn
   task_definition_family = var.task_definition_family
+  container_name         = var.container_name
   ecs_sg                 = var.ecs_sg
   private_subnet_ids     = var.private_subnet_ids
 }

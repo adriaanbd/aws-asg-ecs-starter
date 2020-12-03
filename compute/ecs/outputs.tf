@@ -17,3 +17,7 @@ output "task_definition_arn" {
 output "task_definition_family" {
   value = aws_ecs_task_definition.task.family
 }
+
+output "container_name" {
+  value = var.container_name
+}

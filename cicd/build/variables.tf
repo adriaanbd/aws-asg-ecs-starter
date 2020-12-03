@@ -43,6 +43,10 @@ variable "task_definition_family" {
   type = string
 }
 
+variable "container_name" {
+  type = string
+}
+
 variable "private_subnet_ids" {
   type = list(string)
 }

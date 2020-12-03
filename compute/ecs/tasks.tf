@@ -3,8 +3,8 @@ resource "aws_ecs_task_definition" "task" {
   family                   = var.task_name
   requires_compatibilities = ["EC2"]
   container_definitions    = jsonencode([{
-    "name"= "aws-starter-container",
-    "image"= "${var.ecr_repo_url}:latest",
+    "name"=var.container_name,
+    "image"="${var.ecr_repo_url}:latest",
     "memory"= 300,
     "portMappings"= [
       {

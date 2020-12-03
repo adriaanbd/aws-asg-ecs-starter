@@ -19,66 +19,48 @@ resource "aws_iam_role" "deploy_role" {
 resource "aws_iam_role_policy" "codedeploy_policy" {
   name = "codedeploy_policy"
   role = aws_iam_role.deploy_role.id
-  policy = <<-EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "ecs:DescribeServices",
-        "ecs:CreateTaskSet",
-        "ecs:UpdateServicePrimaryTaskSet",
-        "ecs:DeleteTaskSet",
-        "ecr:*",
-        "elasticloadbalancing:DescribeTargetGroups",
-        "elasticloadbalancing:DescribeListeners",
-        "elasticloadbalancing:ModifyListener",
-        "elasticloadbalancing:DescribeRules",
-        "elasticloadbalancing:ModifyRule",
-        "cloudwatch:DescribeAlarms",
-        "sns:Publish",
-        "s3:GetObject",
-        "s3:GetObjectVersion"
-      ],
-      "Resource": "*",
-      "Effect": "Allow"
-    },
-    {
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Effect": "Allow",
-      "Resource": "*",
-      "Condition": {
-        "StringLike": {
-          "iam:PassedToService": [
-            "ecs-tasks.amazonaws.com"
-          ]
-        }
+  policy = jsonencode(
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "ecs:DescribeServices",
+          "ecs:CreateTaskSet",
+          "ecs:UpdateServicePrimaryTaskSet",
+          "ecs:DeleteTaskSet",
+          "ecr:*",
+          "elasticloadbalancing:DescribeTargetGroups",
+          "elasticloadbalancing:DescribeListeners",
+          "elasticloadbalancing:ModifyListener",
+          "elasticloadbalancing:DescribeRules",
+          "elasticloadbalancing:ModifyRule",
+          "cloudwatch:DescribeAlarms",
+          "sns:Publish",
+          "s3:*"
+          # "s3:GetObject",
+          # "s3:GetObjectVersion"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      },
+      {
+        "Action": [
+          "iam:PassRole"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        # "Condition": {
+        #   "StringLike": {
+        #     "iam:PassedToService": [
+        #       "ecs-tasks.amazonaws.com"
+        #     ]
+        #   }
+        # }
       }
-    }
-  ]
+    ]
+  })
 }
-EOF
-}
-
-# "ecs:RegisterTaskDefinition"
-
-# statement {
-#     sid    = "AllowS3"
-#     effect = "Allow"
-
-#     actions = ["s3:*"]
-
-#     resources = [
-#         var.sourceCodeBucketArn,
-#         "${var.sourceCodeBucketArn}/*"
-#     ]
-# }
-
-# statement {
-#     sid    = "AllowPassRole"
-#     effect = "Allow"
 
 #     actions = ["iam:PassRole"]
 

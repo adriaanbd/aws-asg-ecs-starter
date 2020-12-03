@@ -21,3 +21,7 @@ output "task_definition_arn" {
 output "task_definition_family" {
   value = module.ecs.task_definition_family
 }
+
+output "container_name" {
+  value = module.ecs.container_name
+}

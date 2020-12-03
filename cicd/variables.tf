@@ -42,6 +42,10 @@ variable "task_definition_family" {
   type = string
 }
 
+variable "container_name" {
+  type = string
+}
+
 variable "blue_lb_target_group_name" {
   type = string
 }

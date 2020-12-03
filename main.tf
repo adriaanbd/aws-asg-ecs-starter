@@ -47,6 +47,7 @@ module "cicd" {
   ecs_cluster_name           = module.compute.ecs_cluster_name
   task_definition_arn        = module.compute.task_definition_arn
   task_definition_family     = module.compute.task_definition_family
+  container_name             = module.compute.container_name
   private_subnet_ids         = module.network.prv_sub_ids
   ecs_sg                     = module.security.app_sg_id
 }

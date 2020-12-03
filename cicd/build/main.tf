@@ -66,6 +66,11 @@ resource "aws_codebuild_project" "app" {
     }
 
     environment_variable {
+      name  = "CONTAINER_NAME"
+      value = var.container_name
+    }
+
+    environment_variable {
       name  = "ECS_SECURITY_GROUP"
       value = var.ecs_sg
     }
