@@ -16,3 +16,11 @@ variable "os_username" {
   type        = string
   description = "OS Username that will use the generated SSH key"
 }
+
+variable "ecr_repo_arn" {
+  type = string
+}
+
+variable "ecs_cluster_arn" {
+  type = string
+}

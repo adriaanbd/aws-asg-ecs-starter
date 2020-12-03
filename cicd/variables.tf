@@ -34,6 +34,14 @@ variable "ecs_cluster_name" {
   type = string
 }
 
+variable "task_definition_arn" {
+  type = string
+}
+
+variable "task_definition_family" {
+  type = string
+}
+
 variable "blue_lb_target_group_name" {
   type = string
 }
@@ -43,5 +51,13 @@ variable "green_lb_target_group_name" {
 }
 
 variable "alb_http_listener_arn" {
+  type = string
+}
+
+variable "private_subnet_ids" {
+  type = list(string)
+}
+
+variable "ecs_sg" {
   type = string
 }

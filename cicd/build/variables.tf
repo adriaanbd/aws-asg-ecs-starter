@@ -22,3 +22,27 @@ variable "dockerhub_params" {
 variable "pipeline_bucket_arn" {
   type = string
 }
+
+variable "deploy_role_arn" {
+  type = string
+}
+
+variable "pipeline_role_arn" {
+  type = string
+}
+
+variable "ecs_sg" {
+  type = string
+}
+
+variable "task_definition_arn" {
+  type = string
+}
+
+variable "task_definition_family" {
+  type = string
+}
+
+variable "private_subnet_ids" {
+  type = list(string)
+}

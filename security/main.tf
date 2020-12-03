@@ -11,5 +11,7 @@ module "keys" {
 }
 
 module "iam" {
-  source       = "./iam"
+  source          = "./iam"
+  ecs_cluster_arn = var.ecs_cluster_arn
+  ecr_repo_arn    = var.ecr_repo_arn
 }

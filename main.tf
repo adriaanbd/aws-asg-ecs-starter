@@ -23,16 +23,17 @@ module "compute" {
   pub_sub_ids                = module.network.pub_sub_ids
   prv_sub_ids                = module.network.prv_sub_ids
   ecr_repo_url               = module.cicd.ecr_repo_url
-  # ecr_image_name             = module.cicd.ecr_image_name
   label                      = var.bg_label
 }
 
 module "security" {
-  source        = "./security"
-  namespace     = var.namespace
-  vpc_id        = module.network.vpc_id
-  ssh_key_name  = var.ssh_key_name
-  os_username   = var.os_username_for_ssh_key
+  source          = "./security"
+  namespace       = var.namespace
+  vpc_id          = module.network.vpc_id
+  ssh_key_name    = var.ssh_key_name
+  os_username     = var.os_username_for_ssh_key
+  ecs_cluster_arn = module.compute.ecs_cluster_arn
+  ecr_repo_arn    = module.cicd.ecr_repo_arn
 }
 
 module "cicd" {
@@ -44,4 +45,8 @@ module "cicd" {
   green_lb_target_group_name = module.network.green_lb_target_group_name
   ecs_service_name           = module.compute.ecs_service_name
   ecs_cluster_name           = module.compute.ecs_cluster_name
+  task_definition_arn        = module.compute.task_definition_arn
+  task_definition_family     = module.compute.task_definition_family
+  private_subnet_ids         = module.network.prv_sub_ids
+  ecs_sg                     = module.security.app_sg_id
 }

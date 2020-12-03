@@ -29,3 +29,7 @@ output "ecr_repo_url" {
 output "ecr_image_name" {
   value = module.build.ecr_image_name
 }
+
+output "ecr_repo_arn" {
+  value = module.build.ecr_repo_arn
+}

@@ -69,7 +69,16 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
       "codedeploy:RegisterApplicationRevision",
       "codedeploy:GetDeploymentConfig",
       "ecs:RegisterTaskDefinition",
-      "iam:PassRole"
+      "ecr:DescribeImages",
+      "iam:PassRole",
+      "ecr:*",
+      "ec2:*",
+      "elasticloadbalancing:*",
+      "autoscaling:*",
+      "cloudwatch:*",
+      "s3:*",
+      "sns:*",
+      "ecs:*"
     ],
     "Resource": "*"
     }
@@ -77,3 +86,32 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 }
 EOF
 }
+
+# why?
+# statement {
+#     sid    = "AllowECS"
+#     effect = "Allow"
+
+#     actions = ["ecs:*"]
+
+#     resources = ["*"]
+# }
+
+# why so open?
+# statement {
+#   sid    = "AllowResources"
+#   effect = "Allow"
+
+  # actions = [
+  #   "ec2:*",
+  #   "elasticloadbalancing:*",
+  #   "autoscaling:*",
+  #   "cloudwatch:*",
+  #   "s3:*",
+  #   "sns:*",
+  #   "ecs:*",
+  #   "iam:PassRole"
+  # ]
+
+#   resources = ["*"]
+# }

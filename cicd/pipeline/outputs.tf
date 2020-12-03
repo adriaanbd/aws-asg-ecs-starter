@@ -5,3 +5,7 @@ output "codecommit_arn" {
 output "bucket_arn" {
   value = aws_s3_bucket.pipeline_bucket.arn
 }
+
+output "pipeline_role_arn" {
+  value = aws_s3_bucket.pipeline_bucket.arn
+}

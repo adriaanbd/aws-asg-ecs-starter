@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "deploy_role_policy" {
     effect  = "Allow"
     principals {
       type        = "Service"
-      identifiers = ["codedeploy.amazonaws.com"]
+      identifiers = ["codedeploy.amazonaws.com", "ecs-tasks.amazonaws.com"]
     }
     actions = ["sts:AssumeRole"]
   }
@@ -29,12 +29,12 @@ resource "aws_iam_role_policy" "codedeploy_policy" {
         "ecs:CreateTaskSet",
         "ecs:UpdateServicePrimaryTaskSet",
         "ecs:DeleteTaskSet",
+        "ecr:*",
         "elasticloadbalancing:DescribeTargetGroups",
         "elasticloadbalancing:DescribeListeners",
         "elasticloadbalancing:ModifyListener",
         "elasticloadbalancing:DescribeRules",
         "elasticloadbalancing:ModifyRule",
-        "lambda:InvokeFunction",
         "cloudwatch:DescribeAlarms",
         "sns:Publish",
         "s3:GetObject",
@@ -60,4 +60,32 @@ resource "aws_iam_role_policy" "codedeploy_policy" {
   ]
 }
 EOF
-} 
+}
+
+# "ecs:RegisterTaskDefinition"
+
+# statement {
+#     sid    = "AllowS3"
+#     effect = "Allow"
+
+#     actions = ["s3:*"]
+
+#     resources = [
+#         var.sourceCodeBucketArn,
+#         "${var.sourceCodeBucketArn}/*"
+#     ]
+# }
+
+# statement {
+#     sid    = "AllowPassRole"
+#     effect = "Allow"
+
+#     actions = ["iam:PassRole"]
+
+#     resources = [
+#         aws_iam_role.ecsExecutionRole.arn,
+#         aws_iam_role.ecsTaskRole.arn,
+#         var.ecsServiceArn,
+#         aws_iam_role.codeDeployServiceRole.arn
+#     ]
+# }

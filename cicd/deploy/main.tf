@@ -4,11 +4,20 @@ resource "aws_codedeploy_app" "this" {
   name             = "aws-starter-deploy"
 }
 
+resource "aws_codedeploy_deployment_config" "this" {
+  deployment_config_name                    = "aws-starter-deployment_config"
+  compute_platform                          = "ECS"
+
+  traffic_routing_config {
+    type = "AllAtOnce"
+  }
+}
+
 resource "aws_codedeploy_deployment_group" "this" {
   app_name               = aws_codedeploy_app.this.name
   deployment_group_name  = "aws-starter-deployment-group"
   service_role_arn       = aws_iam_role.deploy_role.arn
-  deployment_config_name = "CodeDeployDefault.ECSAllAtOnce"
+  deployment_config_name = aws_codedeploy_deployment_config.this.deployment_config_name
 
   deployment_style {
     deployment_option = "WITH_TRAFFIC_CONTROL"
@@ -22,7 +31,6 @@ resource "aws_codedeploy_deployment_group" "this" {
 
   load_balancer_info {
     target_group_pair_info {
-      # The path used by a load balancer to route production traffic when an Amazon ECS deployment is complete.
       prod_traffic_route {
         listener_arns = var.lb_listener_arns
       }
@@ -38,7 +46,6 @@ resource "aws_codedeploy_deployment_group" "this" {
   blue_green_deployment_config {
     deployment_ready_option {
       action_on_timeout    = "CONTINUE_DEPLOYMENT"
-      wait_time_in_minutes = 0
     }
 
     terminate_blue_instances_on_deployment_success {

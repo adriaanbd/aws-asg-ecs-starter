@@ -25,13 +25,19 @@ locals {
 }
 
 module "build" {
-  source              = "./build"
-  aws_region          = var.aws_region
-  name                = var.name
-  aws_account_id      = data.aws_caller_identity.current.account_id
-  ssm_kms_key_arn     = data.aws_kms_alias.ssm_key.arn
-  dockerhub_params    = local.dockerhub_params
-  pipeline_bucket_arn = module.pipeline.bucket_arn
+  source                 = "./build"
+  aws_region             = var.aws_region
+  name                   = var.name
+  aws_account_id         = data.aws_caller_identity.current.account_id
+  ssm_kms_key_arn        = data.aws_kms_alias.ssm_key.arn
+  dockerhub_params       = local.dockerhub_params
+  pipeline_bucket_arn    = module.pipeline.bucket_arn
+  deploy_role_arn        = module.deploy.deploy_role_arn
+  pipeline_role_arn      = module.pipeline.pipeline_role_arn
+  task_definition_arn    = var.task_definition_arn
+  task_definition_family = var.task_definition_family
+  ecs_sg                 = var.ecs_sg
+  private_subnet_ids     = var.private_subnet_ids
 }
 
 module "deploy" {
